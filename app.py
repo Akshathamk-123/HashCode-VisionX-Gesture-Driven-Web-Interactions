@@ -16,7 +16,8 @@ cap.set(4, 728)
 detector = HandDetector(detectionCon=0.8)
 keys = [["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
         ["A", "S", "D", "F", "G", "H", "J", "K", "L", ";"],
-        ["Z", "X", "C", "V", "B", "N", "M", ",", ".", "/"]]
+        ["Z", "X", "C", "V", "B", "N", "M", ",", ".", "/"],
+        ["_","|"]]
 finalText = ""
 
 keyboard = Controller()
@@ -101,10 +102,10 @@ def generate_frames():
                             cv2.rectangle(img, button.pos, (x + w, y + h), (0, 255, 0), cv2.FILLED)
                             cv2.putText(img, button.text, (x + 20, y + 65),cv2.FONT_HERSHEY_PLAIN, 4, (255, 255, 255), 4)
                             finalText += button.text
-                            
+                        sleep(0.20)
 
-        cv2.rectangle(img, (50, 350), (700,450), (175, 0, 175), cv2.FILLED)
-        cv2.putText(img, finalText, (60, 430),cv2.FONT_HERSHEY_PLAIN, 5, (255, 255, 255), 5)
+        cv2.rectangle(img, (50, 450), (700,550), (175, 0, 175), cv2.FILLED)
+        cv2.putText(img, finalText, (60, 540),cv2.FONT_HERSHEY_PLAIN, 5, (255, 255, 255), 5)
         if not success:
             break
         else:
@@ -117,7 +118,7 @@ def generate_frames():
 
 @app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template('index_1.html')
 
 @app.route('/video')
 def video():
